@@ -1,10 +1,10 @@
 require("makedrfile")
 require("cmdargs")
-local running = true --so the terminal ACTUALLY runs
+local running = true --useless variable
 local arg1 = nil
 local tempvar = nil
 local useros = "nil"
-local sep = package.config:sub(1,1)
+local sep = package.config:sub(1,1) --getting the file system seperator
 if sep == '\\' then
     useros = "windows"
 else
@@ -12,8 +12,8 @@ else
 end
 
 local function get_home()
-  return os.getenv("HOME")                -- Unix/macOS
-      or os.getenv("USERPROFILE")         -- Windows
+  return os.getenv("HOME")                -- unix based systems aka linux mac etc
+      or os.getenv("USERPROFILE")         -- windows
 end
 
 local home = get_home()
