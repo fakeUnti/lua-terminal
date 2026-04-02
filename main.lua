@@ -51,7 +51,9 @@ while running do --ACTUAL CODE
 
     if command == "cd" then
         directory = arg1
-
+        print(directory) 
+        goto continue
+    
     elseif command == "cdr" then --cd but saves the directory inside of startingdir
         io.open("startingdir.txt", "w"):close()
         file = io.open("startingdir.txt", "w")
@@ -61,20 +63,30 @@ while running do --ACTUAL CODE
         directory = arg1
         file:write(directory)
         file:close()
+        goto continue
 
     elseif command == "dlt" then --delete cmd
-        if useros == "windows" then -- SUPPORT ARG1 ADD LATER
-           os.execute("del " .. directory) 
+        if arg1 == nil then
+            if useros == "windows" then -- SUPPORT ARG1 ADD LATER
+                os.execute("del " .. directory) 
+            else
+                os.execute("sudo rm " .. directory)
+            end
         else
-            os.execute("sudo rm " .. directory)
+           if useros == "windows" then -- SUPPORT ARG1 ADD LATER --done
+                os.execute("del " .. directory) 
+            else
+                os.execute("sudo rm " .. directory)
+            end 
         end
-
+    
     elseif command == "ls" then --list command
         if arg1 == nil then
             os.execute("ls " .. directory)
         else
             os.execute("ls " .. arg1)
         end
+        goto continue
     end
-
+    ::continue::
 end
