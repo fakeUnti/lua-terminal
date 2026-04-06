@@ -5,14 +5,14 @@ function MAKEDRFILE(useros,home)
         if useros == "windows" then
            os.execute("type nul > startingdir.txt")--windows makes file
         else
-            local script_dir = arg[0]:match("(.*/)") or "./" --i know this looks scary but its not dw it just detects where the file is run
+            local script_dir = arg[0]:match("(.*/)") or "./" --detects were the file is run
             os.execute("touch " .. script_dir .. "startingdir.txt") --unix makes file
         end
         local file = io.open("startingdir.txt", "w") --opens
         if not file then
             return
         else
-            file:write(home)--writes
+            file:write(home)
         end
         file:close() --closes
         print("file created!")

@@ -49,7 +49,7 @@ end
 
 
 
-while running do --ACTUAL CODE // FIX COMMANDS THAT COULD POSSIBLY FAIL AND ADD ERROR CODES AND FIX SUGGESTIONS
+while running do --actual code // add error codes for functions that can fail 
 
     if useros == "windows" then
         io.write(directory .. "> ")--the directory thing
@@ -69,7 +69,7 @@ while running do --ACTUAL CODE // FIX COMMANDS THAT COULD POSSIBLY FAIL AND ADD 
         directory = arg1
         print(directory)
         goto continue
-    
+        
     elseif command == "cdr" then --cd but saves the directory inside of startingdir
         io.open("startingdir.txt", "w"):close()
         file = io.open("startingdir.txt", "w")
@@ -81,7 +81,7 @@ while running do --ACTUAL CODE // FIX COMMANDS THAT COULD POSSIBLY FAIL AND ADD 
         file:close()
         goto continue
 
-    elseif command == "dlt" then --sudo rm -rf / 
+    elseif command == "dlt" then --sudo rm -rf 
         if arg1 == nil then
             if useros == "windows" then
                 os.execute("del " .. directory) 
@@ -93,7 +93,7 @@ while running do --ACTUAL CODE // FIX COMMANDS THAT COULD POSSIBLY FAIL AND ADD 
                 os.execute("del " .. arg1) 
             else
                 os.execute("sudo rm -rf " .. arg1)
-            end 
+            end
         end
     
     elseif command == "ls" then --ls
@@ -112,10 +112,10 @@ while running do --ACTUAL CODE // FIX COMMANDS THAT COULD POSSIBLY FAIL AND ADD 
 	    end
         goto continue
     
-    elseif command == "mkdir" then --mkdir // fixed :)
+    elseif command == "mkdir" then --mkdir 
         os.execute("cd ".. directory .." &&" .. "mkdir " .. arg1)
         goto continue
     end
-
+    
     ::continue::
 end
