@@ -1,10 +1,4 @@
-function WAIT(seconds)
-    local start = os.time()
-    while os.time() - start + seconds do
-        --on purpose to have nothing inside do not worry
-    end
-end
-
+require("otherfunctions")
 function MAKEDRFILE(useros,home)
     print("no directory file found!\n do you want to make one? [Y/N]")
     if io.read("*l"):sub(1,1):lower() == "y" then
@@ -28,3 +22,4 @@ function MAKEDRFILE(useros,home)
         return
     end
 end
+--code in here is a *little* messy but its generally fine since this files practically useless 

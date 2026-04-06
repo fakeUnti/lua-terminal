@@ -1,6 +1,6 @@
 require("makedrfile")
 require("cmdargs")
-require("vrd")
+require("otherfunctions")
 local running = true --useless variable
 local arg1 = nil
 local tempvar = nil
@@ -47,7 +47,9 @@ if not isvalid then
     file:close()
 end
 
-while running do --ACTUAL CODE
+
+
+while running do --ACTUAL CODE // FIX COMMANDS THAT COULD POSSIBLY FAIL AND ADD ERROR CODES AND FIX SUGGESTIONS
 
     if useros == "windows" then
         io.write(directory .. "> ")--the directory thing
@@ -79,7 +81,7 @@ while running do --ACTUAL CODE
         file:close()
         goto continue
 
-    elseif command == "dlt" then --sudo rm 
+    elseif command == "dlt" then --sudo rm -rf / 
         if arg1 == nil then
             if useros == "windows" then
                 os.execute("del " .. directory) 
@@ -105,13 +107,14 @@ while running do --ACTUAL CODE
     elseif command == "mf" then --touch / makes file
         if useros == "windows" then
             os.execute("type nul > " .. arg1)
-	    else
+	    else --unix
 	        os.execute("touch " .. arg1)
 	    end
         goto continue
     
-    --[[elseif command == "mkdir" then --mkdir DOESNT WORK FIGURE OUT LATER
-        os.execute("mkdir " .. arg1)]]
+    elseif command == "mkdir" then --mkdir // fixed :)
+        os.execute("cd ".. directory .." &&" .. "mkdir " .. arg1)
+        goto continue
     end
 
     ::continue::
