@@ -115,6 +115,12 @@ while running do --actual code // add error codes for functions that can fail
     elseif command == "mkdir" then --mkdir 
         os.execute("cd ".. directory .." &&" .. "mkdir " .. arg1)
         goto continue
+    elseif command == "dltapp" then --sudo remove app
+        if useros == "unix" then
+            os.execute("sudo remove " .. arg1)
+        else
+            os.execute("Get-AppxPackage ".. arg1 .. " | Remove-AppxPackage") --windows
+        end
     end
     
     ::continue::
