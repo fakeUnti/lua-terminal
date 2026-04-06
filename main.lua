@@ -108,6 +108,7 @@ while running do --ACTUAL CODE
 	    else
 	        os.execute("touch " .. arg1)
 	    end
+        goto continue
     
     --[[elseif command == "mkdir" then --mkdir DOESNT WORK FIGURE OUT LATER
         os.execute("mkdir " .. arg1)]]
